@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Journal.css';
 import JournalCard from './JournalCard';
+import MoodChart from './MoodChart';
 import Moods from './Moods';
 
 import {
@@ -40,6 +41,8 @@ class Journal extends React.Component<Props, State> {
                 </div>
 
                 <div className="journal-card-group">
+                    
+                    <MoodChart></MoodChart>
 
                     {/* TODO: Iterate over cards from API and after 7th show button for full calendar */}
                     <JournalCard
