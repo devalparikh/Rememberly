@@ -1,0 +1,28 @@
+.card-btn-group {
+    margin: auto;
+    max-width: 600px;
+}
+
+.card-btn {
+    /* Text */
+    text-align: center;
+    font-weight: 300;
+
+    /* Border */
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5%;
+    border-color: #282c34;
+
+    /* Spacing */
+    padding: 60px;
+    max-width: 200px;
+    margin: auto;
+    margin-bottom: 80px;
+}
+
+.card-btn:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-width: 2px;
+    border-color: white;
+}
