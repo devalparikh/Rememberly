@@ -8,7 +8,8 @@ import Moods from './Moods';
 import {
     Container,
     Row,
-    Col
+    Col,
+    Button
 } from 'react-bootstrap'
 
 interface Props {
@@ -42,7 +43,10 @@ class Journal extends React.Component<Props, State> {
 
                 <div className="journal-card-group">
                     
+                    {/* Mood Chart */}
                     <MoodChart></MoodChart>
+
+                    <Button href="/journal/create" variant="flat">Check-In</Button>
 
                     {/* TODO: Iterate over cards from API and after 7th show button for full calendar */}
                     <JournalCard

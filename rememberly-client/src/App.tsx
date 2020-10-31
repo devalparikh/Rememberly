@@ -9,15 +9,20 @@ import {
 } from "react-router-dom";
 
 // Navbar
-import NavBarCustom from './components/navbar/NavBarCustom'
+import NavBarCustom from './components/navbar/NavBarCustom';
 
 // Landing Page
-import LandingPage from './components/home/LandingPage'
+import LandingPage from './components/home/LandingPage';
 
 // Main Memory Section
-import Memory from './components/memory/Memory'
+import Memory from './components/memory/Memory';
 
-import Journal from './components/journal/Journal'
+import Journal from './components/journal/Journal';
+import CreateJournal from './components/journal/create_journal/CreateJournal';
+
+interface State {
+  name: string;
+}
 
 function App() {
 
@@ -43,10 +48,17 @@ function App() {
             {/* Habits Section */}
 
           </Route>
-          <Route path="/journal">
+          <Route exact path="/journal">
             {/* Journal Section */}
             <Journal></Journal>
           </Route>
+
+          <Route exact path="/journal/create">
+            {/* Journal Section */}
+            {/* TODO: change to get name from API */}
+            <CreateJournal name="Deval"></CreateJournal>
+          </Route>
+
           <Route path="/travel">
             {/* Travel Section */}
 
