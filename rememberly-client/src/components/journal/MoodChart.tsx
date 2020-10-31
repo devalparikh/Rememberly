@@ -2,7 +2,15 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Journal.css';
 
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import {
+    LineChart,
+    Line,
+    CartesianGrid,
+    XAxis,
+    YAxis,
+    Tooltip,
+    Legend
+} from 'recharts';
 
 interface Props {
 }
@@ -13,12 +21,12 @@ interface State {
 
 // TODO: get real data from API call
 const data = [
-    { name: '10/15', mood: 3 },
-    { name: '10/16', mood: 2 },
-    { name: '10/22', mood: 4 },
-    { name: '10/29', mood: 4 },
-    { name: '10/30', mood: 3 },
-    
+    { name: '10/15', mood: 3, habits: 4 },
+    { name: '10/16', mood: 2, habits: 1 },
+    { name: '10/22', mood: 4, habits: 4 },
+    { name: '10/29', mood: 4, habits: 3 },
+    { name: '10/30', mood: 3, habits: 2 },
+
 ];
 
 
@@ -40,12 +48,12 @@ class JournalCard extends React.Component<Props, State> {
             graphWidth = 600
         }
         mediaQuery.addListener((mq) => {
-        if (mq.matches) {
-            console.log('desk')
-            graphWidth = 600
-        }
+            if (mq.matches) {
+                console.log('desk')
+                graphWidth = 600
+            }
         });
-        
+
         return (
             <div>
                 <div className="title">
@@ -60,9 +68,15 @@ class JournalCard extends React.Component<Props, State> {
                         <Tooltip />
                     </LineChart> */}
                     <LineChart width={graphWidth} height={400} data={data}>
+                        {/* Line graph for mood */}
                         <Line type="monotone" dataKey="mood" stroke="#8884d8" />
-                        <XAxis dataKey="name"/>
+                        {/* Line graph for habits */}
+                        <Line type="monotone" dataKey="habits" stroke="#B6CAD4" strokeDasharray="5 5" />
+
+                        <XAxis dataKey="name" />
                         <Tooltip />
+                        <Legend />
+
 
                     </LineChart>
                 </div>
