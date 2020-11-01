@@ -1,8 +1,6 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './CreateJournal.css';
 
-import ProgressBar from 'react-bootstrap/ProgressBar'
 import { Button } from 'react-bootstrap';
 
 
@@ -25,22 +23,19 @@ class Createjournal extends React.Component<Props, State> {
 
     render() {
 
+        const { name } = this.props;
 
         return (
             <div className="bg">
                 <div className="exit-btn-area">
-                    <Button href="/journal" variant="exit">Exit</Button>
+                    <Button href="/journal" variant="custom">Exit</Button>
                 </div>
-                <div className="title-create">Hey, {this.props.name}. How are you today?</div>
+                <div className="title-create">Hey, {name}. How are you today?</div>
                 <div className="continue-btn-area">
-                    <Button href="/journal/mood" variant="exit">Continue</Button>
+                    <Button href="/journal/create/mood" variant="custom">Continue</Button>
                 </div>
-
 
             </div>
-
-
-
 
         );
     }

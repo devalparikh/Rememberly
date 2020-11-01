@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './Memory.css';
 
 // Icons "Icon made by Freepik from www.flaticon.com"

@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './Journal.css';
 import JournalCard from './JournalCard';
 import MoodChart from './MoodChart';

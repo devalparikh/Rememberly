@@ -13,17 +13,32 @@
 .title-create {
     font-size: 40px;
     font-weight: 800;
+    margin: 20px;
+}
+
+.title-mood {
+    font-size: 80px;
+    font-weight: 800;
+    letter-spacing: 2;
+}
+
+.navigation-btn-area {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.back-btn-area {
+    text-align: left;
 }
 
 .exit-btn-area {
     text-align: right;
 }
 
-.continue-btn-area {
+.continue-btn-area {}
 
-}
-
-.btn-exit {
+.btn-custom {
     background-color: white;
     color: #8884d8;
     border: black;
@@ -32,16 +47,25 @@
     font-weight: 800;
     letter-spacing: 2px;
     padding: 15px 30px 15px 30px;
-    margin: 50px 20px 50px auto;
-
+    margin: 50px
 }
 
-.btn-exit:hover {
+.btn-custom:hover {
     background-color: rgb(241, 241, 241);
     color: #8884d8;
     border: black;
     border-width: 2px;
     border-style: solid;
-    margin-right: 20px;
+
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.mood-slider {
+    margin: 60px 5% 50px 5%;
+}
+
+@media (min-width: 768px) {
+    .mood-slider {
+        margin: 60px 30% 50px 30%;
+    }
 }

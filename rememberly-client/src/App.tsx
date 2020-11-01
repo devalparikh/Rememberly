@@ -19,13 +19,14 @@ import Memory from './components/memory/Memory';
 
 import Journal from './components/journal/Journal';
 import CreateJournal from './components/journal/create_journal/CreateJournal';
+import CreateJournalMood from './components/journal/create_journal/CreateJournalMood';
 
 interface State {
   name: string;
 }
 
 function App() {
-
+  
   return (
     <div>
       {/* Nav Bar */}
@@ -57,6 +58,12 @@ function App() {
             {/* Journal Section */}
             {/* TODO: change to get name from API */}
             <CreateJournal name="Deval"></CreateJournal>
+          </Route>
+
+          <Route exact path="/journal/create/mood">
+            {/* Journal Section */}
+            {/* TODO: change to get name from API */}
+            <CreateJournalMood></CreateJournalMood>
           </Route>
 
           <Route path="/travel">
