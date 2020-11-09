@@ -10,6 +10,7 @@ import {
 
 // Navbar
 import NavBarCustom from './components/navbar/NavBarCustom';
+import NavBar2 from './components/navbar/NavBar2';
 
 // Landing Page
 import LandingPage from './components/home/LandingPage';
@@ -35,7 +36,10 @@ function App() {
   return (
     <div>
       {/* Nav Bar */}
-      <NavBarCustom title="Rememberly"></NavBarCustom>
+      {/* <NavBarCustom title="Rememberly"></NavBarCustom> */}
+      <NavBar2/>
+
+
 
 
       <Router>
