@@ -8,7 +8,7 @@ const variants = {
     zIndex: 1
   },
   closed: {
-    transition: { zIndex: 0, staggerChildren: 0.05, staggerDirection: -1 },
+    transition: { zIndex: 0, staggerChildren: 0.01, staggerDirection: -1 },
     
   }
 };

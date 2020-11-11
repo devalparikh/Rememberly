@@ -35,7 +35,9 @@ nav {
     z-index: 1;
 }
 
-.nav-button:focus { outline: none; }
+.nav-button:focus {
+    outline: none;
+}
 
 .nav-ul, .nav-li {
     margin: 0;
