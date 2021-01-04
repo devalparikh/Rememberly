@@ -1,0 +1,24 @@
+{
+  "name": "rememberly",
+  "version": "1.0.0",
+  "description": "Rememberly",
+  "main": "index.js",
+  "scripts": {
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend  && npm run build --prefix backend",
+    "start": "cd backend && node server.js",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devalparikh/Rememberly.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devalparikh/Rememberly/issues"
+  },
+  "homepage": "https://github.com/devalparikh/Rememberly#readme",
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
