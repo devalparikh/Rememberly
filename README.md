@@ -1,5 +1,5 @@
 Rememberly
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c61beaa7-1a83-41fb-b607-54e50b5e50cf/deploy-status)](https://app.netlify.com/sites/rememberly/deploys)
 ### Setup
 1. Setup frontend (`http://localhost:3000/` or `http://localhost:8000/`)
 	1. `cd frontend`
