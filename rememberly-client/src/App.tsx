@@ -21,7 +21,7 @@ import Memory from './components/memory/Memory';
 import Journal from './components/journal/Journal';
 import CreateJournal from './components/journal/create_journal/CreateJournal';
 import CreateJournalMood from './components/journal/create_journal/CreateJournalMood';
-import CreateJournalActivities from './components/journal/create_journal/CreateJournalActivities';
+import { CreateJournalActivities } from './components/journal/create_journal/CreateJournalActivities';
 
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -37,7 +37,7 @@ function App() {
     <div>
       {/* Nav Bar */}
       {/* <NavBarCustom title="Rememberly"></NavBarCustom> */}
-      <NavBar2/>
+      <NavBar2 />
 
 
 
