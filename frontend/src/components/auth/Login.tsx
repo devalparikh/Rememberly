@@ -9,7 +9,6 @@ import axios from 'axios';
 import './Auth.css';
 
 interface Props {
-
 };
 
 export function Login(props: Props) {

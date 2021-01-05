@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -18,8 +18,8 @@ import LandingPage from './components/home/LandingPage';
 // Main Memory Section
 import Memory from './components/memory/Memory';
 
-import Journal from './components/journal/Journal';
-import CreateJournal from './components/journal/create_journal/CreateJournal';
+import { Journal } from './components/journal/Journal';
+import { CreateJournal } from './components/journal/create_journal/CreateJournal';
 import CreateJournalMood from './components/journal/create_journal/CreateJournalMood';
 import { CreateJournalActivities } from './components/journal/create_journal/CreateJournalActivities';
 
@@ -30,12 +30,42 @@ import { Logout } from './components/auth/Logout';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import { AnimatePresence } from "framer-motion";
+import axios from 'axios';
 
-interface State {
-  name: string;
+interface iUser {
+  _id: string;
+  email: string;
+  username: string;
+  custom_activities: [];
 }
 
 function App() {
+
+  const currentUserDefault: iUser = {
+    _id: "",
+    email: "",
+    username: "",
+    custom_activities: []
+  }
+  const [currentUser, setCurrentUser] = useState<iUser>(currentUserDefault);
+
+  useEffect(() => {
+    if (localStorage.usertoken) {
+
+      // TODO: API call to get user info
+      axios
+        .get(`${process.env.REACT_APP_URL}/auth/user`, {
+          headers: { "x-auth-token": `${localStorage.usertoken}` }
+        })
+        .then(res => {
+          setCurrentUser(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+
+  }, []);
 
   return (
     <div>
@@ -66,13 +96,13 @@ function App() {
             </Route>
             <Route exact path="/journal">
               {/* Journal Section */}
-              <Journal></Journal>
+              <Journal name={currentUser.username}></Journal>
             </Route>
 
             <Route exact path="/journal/create">
               {/* Journal Section */}
               {/* TODO: change to get name from API */}
-              <CreateJournal name="Deval"></CreateJournal>
+              <CreateJournal name={currentUser.username}></CreateJournal>
             </Route>
 
             <Route exact path="/journal/create/mood">

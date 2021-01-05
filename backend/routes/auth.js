@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const auth = require('./middleware/auth');
 
 let User = require('../models/user.model');
 
@@ -108,7 +109,20 @@ router.route('/register').post((req, res) => {
     })
     .catch(err => {
       res.status(400).json({ msg: err });
-    })
-})
+    });
+});
+
+// @route GET /auth/user
+// @desc Get user data
+// @access Private
+router.get('/user', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    if (!user) throw Error('User Does not exist');
+    res.json(user);
+  } catch (e) {
+    res.status(400).json({ msg: e.message });
+  }
+});
 
 module.exports = router;

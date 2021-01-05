@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CreateJournal.css';
 
 import { Button } from 'react-bootstrap';
@@ -9,7 +9,15 @@ interface Props {
     name: string;
 }
 
-interface State {
+interface iCheckin {
+    user_id: string,
+    title: string,
+    mood: number,
+    notes: string,
+    
+    // Selected Activities
+    activities: [], 
+    selected_activities: [];
 
 }
 
@@ -34,39 +42,39 @@ const pageTransition = {
 };
 
 
-class Createjournal extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
+export function CreateJournal(props: Props) {
 
-        this.state = {
-        };
+    const { name } = props;
+    
+    const newCheckin: iCheckin = {
+        user_id: "",
+        title: "",
+        mood: 0,
+        notes: "",
+        activities: [],
+        selected_activities: [],
     }
+    const [checkin, SetCheckin] = useState<iCheckin>(newCheckin);
 
-    render() {
+    return (
+        <div className="bg">
+            <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+            >
+                <div className="exit-btn-area">
+                    <Button href="/journal" variant="custom">Exit</Button>
+                </div>
+                <div className="title-create">Hey, {name}. Ready for your daily check-in?</div>
+                <div className="continue-btn-area">
+                    <Button href="/journal/create/mood" variant="custom">Continue</Button>
+                </div>
 
-        const { name } = this.props;
+            </motion.div>
+        </div>
+    );
 
-        return (
-            <div className="bg">
-                <motion.div
-                    initial="initial"
-                    animate="in"
-                    exit="out"
-                    variants={pageVariants}
-                    transition={pageTransition}
-                >
-                    <div className="exit-btn-area">
-                        <Button href="/journal" variant="custom">Exit</Button>
-                    </div>
-                    <div className="title-create">Hey, {name}. Ready for your daily check-in?</div>
-                    <div className="continue-btn-area">
-                        <Button href="/journal/create/mood" variant="custom">Continue</Button>
-                    </div>
-
-                </motion.div>
-            </div>
-        );
-    }
 }
-
-export default Createjournal;
