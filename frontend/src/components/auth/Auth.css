@@ -1,0 +1,18 @@
+.auth-title {
+    color: #646569;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    padding: 40px 0px 0px 30px;
+}
+
+.auth-input {
+    font-size: 15px;
+    color: #646569;
+    width: 90%;
+    height: 60px;
+    border-radius: 10px;
+    padding: 10px;
+    border-style: solid;
+    margin: auto;
+}

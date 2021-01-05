@@ -20,7 +20,13 @@ const variants = {
 };
 
 const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
-const navLinks = ["Home", "Journal", "Profile"]
+
+let navLinks = ["Home", "About", "Login", "Register"]
+
+if(localStorage.usertoken) {
+    navLinks = ["Home", "Journal", "Profile", "Logout"]
+}
+
 
 export const MenuItem = ({ i }: { i: any}) => {
     // const IconStyle = { border: `2px solid ${colors[i]}` };
