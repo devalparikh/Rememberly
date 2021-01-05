@@ -23,6 +23,10 @@ import CreateJournal from './components/journal/create_journal/CreateJournal';
 import CreateJournalMood from './components/journal/create_journal/CreateJournalMood';
 import { CreateJournalActivities } from './components/journal/create_journal/CreateJournalActivities';
 
+import { Login } from './components/auth/Login';
+import { Register } from './components/auth/Register';
+import { Logout } from './components/auth/Logout';
+
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import { AnimatePresence } from "framer-motion";
@@ -91,6 +95,19 @@ function App() {
               {/* Settings Section */}
 
             </Route>
+
+            <Route path="/login">
+              <Login></Login>
+            </Route>
+
+            <Route path="/register">
+              <Register></Register>
+            </Route>
+
+            <Route path="/logout">
+              <Logout></Logout>
+            </Route>
+
           </Switch>
         </AnimatePresence>
       </Router>

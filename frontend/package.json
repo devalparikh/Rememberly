@@ -14,6 +14,7 @@
     "@types/react-dom": "^16.9.9",
     "@types/react-router-dom": "^5.1.6",
     "@types/recharts": "^1.8.16",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "d3": "^6.2.0",
     "framer-motion": "^2.9.4",
