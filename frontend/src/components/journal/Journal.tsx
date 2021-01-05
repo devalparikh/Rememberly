@@ -12,12 +12,13 @@ import {
 } from 'react-bootstrap'
 
 interface Props {
-    name:string;
+    name: string;
+    user_id: string;
 }
 
 export function Journal(props: Props) {
 
-    const { name } = props;
+    const { name, user_id } = props;
 
     return (
         <div>

@@ -1,24 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CreateJournal.css';
 
 import { Button } from 'react-bootstrap';
 import { motion } from "framer-motion";
 
+import { iCheckin } from '../../../App';
 
 interface Props {
     name: string;
-}
-
-interface iCheckin {
-    user_id: string,
-    title: string,
-    mood: number,
-    notes: string,
-    
-    // Selected Activities
-    activities: [], 
-    selected_activities: [];
-
+    newCheckin: iCheckin;
+    setCheckin: (updatedCheckin: iCheckin) => void;
 }
 
 const pageVariants = {
@@ -44,17 +35,20 @@ const pageTransition = {
 
 export function CreateJournal(props: Props) {
 
-    const { name } = props;
-    
-    const newCheckin: iCheckin = {
-        user_id: "",
-        title: "",
-        mood: 0,
-        notes: "",
-        activities: [],
-        selected_activities: [],
-    }
-    const [checkin, SetCheckin] = useState<iCheckin>(newCheckin);
+    const { name, newCheckin, setCheckin } = props;
+
+    useEffect(() => {
+        // Reset user's checkin to a fresh one
+        const newCheckin: iCheckin = {
+            user_id: "",
+            title: "",
+            mood: 0,
+            notes: "",
+            activities: [],
+            selected_activities: [],
+        }
+        setCheckin(newCheckin);
+    }, []);
 
     return (
         <div className="bg">
@@ -70,7 +64,7 @@ export function CreateJournal(props: Props) {
                 </div>
                 <div className="title-create">Hey, {name}. Ready for your daily check-in?</div>
                 <div className="continue-btn-area">
-                    <Button href="/journal/create/mood" variant="custom">Continue</Button>
+                    <Button href="/journal/create/mood/3" variant="custom">Continue</Button>
                 </div>
 
             </motion.div>

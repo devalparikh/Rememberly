@@ -20,8 +20,10 @@ import Memory from './components/memory/Memory';
 
 import { Journal } from './components/journal/Journal';
 import { CreateJournal } from './components/journal/create_journal/CreateJournal';
-import CreateJournalMood from './components/journal/create_journal/CreateJournalMood';
+import { CreateJournalMood } from './components/journal/create_journal/CreateJournalMood';
 import { CreateJournalActivities } from './components/journal/create_journal/CreateJournalActivities';
+import { CreateJournalConfirm } from './components/journal/create_journal/CreateJournalConfirm';
+
 
 import { Login } from './components/auth/Login';
 import { Register } from './components/auth/Register';
@@ -39,6 +41,18 @@ interface iUser {
   custom_activities: [];
 }
 
+export interface iCheckin {
+  user_id: string,
+  title: string,
+  mood: number,
+  notes: string,
+
+  // Selected Activities
+  activities: [],
+  selected_activities: [];
+
+}
+
 function App() {
 
   const currentUserDefault: iUser = {
@@ -48,6 +62,16 @@ function App() {
     custom_activities: []
   }
   const [currentUser, setCurrentUser] = useState<iUser>(currentUserDefault);
+
+  const newCheckin: iCheckin = {
+    user_id: "",
+    title: "",
+    mood: 0,
+    notes: "",
+    activities: [],
+    selected_activities: [],
+  }
+  const [checkin, SetCheckin] = useState<iCheckin>(newCheckin);
 
   useEffect(() => {
     if (localStorage.usertoken) {
@@ -66,6 +90,7 @@ function App() {
     }
 
   }, []);
+
 
   return (
     <div>
@@ -96,25 +121,49 @@ function App() {
             </Route>
             <Route exact path="/journal">
               {/* Journal Section */}
-              <Journal name={currentUser.username}></Journal>
+              <Journal
+                user_id={currentUser._id}
+                name={currentUser.username}
+              ></Journal>
             </Route>
 
             <Route exact path="/journal/create">
               {/* Journal Section */}
               {/* TODO: change to get name from API */}
-              <CreateJournal name={currentUser.username}></CreateJournal>
+              <CreateJournal
+                name={currentUser.username}
+                newCheckin={checkin}
+                setCheckin={(updatedCheckin: iCheckin): void => { SetCheckin(updatedCheckin) }}
+              ></CreateJournal>
             </Route>
 
-            <Route exact path="/journal/create/mood">
+            <Route exact path="/journal/create/mood/:mood">
               {/* Journal Section */}
               {/* TODO: change to get name from API */}
-              <CreateJournalMood></CreateJournalMood>
+              <CreateJournalMood
+                name={currentUser.username}
+                newCheckin={checkin}
+                setCheckin={(updatedCheckin: iCheckin): void => { SetCheckin(updatedCheckin) }}
+              ></CreateJournalMood>
             </Route>
 
-            <Route exact path="/journal/create/activities">
+            <Route exact path="/journal/create/mood/:mood/activities/:selectedActivities">
               {/* Journal Section */}
               {/* TODO: change to get name from API */}
-              <CreateJournalActivities></CreateJournalActivities>
+              <CreateJournalActivities
+                name={currentUser.username}
+                newCheckin={checkin}
+                custom_activities={currentUser.custom_activities}
+              ></CreateJournalActivities>
+            </Route>
+
+            <Route exact path="/journal/create/mood/:mood/activities/:selectedActivities/confirm">
+              {/* Journal Section */}
+              {/* TODO: change to get name from API */}
+              <CreateJournalConfirm
+                name={currentUser.username}
+                newCheckin={checkin}
+              ></CreateJournalConfirm>
             </Route>
 
             <Route path="/travel">
