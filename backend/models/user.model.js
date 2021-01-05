@@ -23,6 +23,9 @@ const userSchema = new Schema({
         type: String,
         required: true,
         minlength: 3,
+    },
+    custom_activities: {
+        type: [String]
     }
 }, {
     timestamps: true,
