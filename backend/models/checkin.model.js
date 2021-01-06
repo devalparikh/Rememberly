@@ -27,6 +27,6 @@ const checkinSchema = new Schema({
     timestamps: true,
 });
 
-const User = mongoose.model('Checkin', checkinSchema);
+const Checkin = mongoose.model('Checkin', checkinSchema);
 
 module.exports = Checkin;

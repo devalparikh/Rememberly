@@ -56,14 +56,10 @@
     background-color: #8884d8;
     border: black;
     border-radius: 10px;
-
-
     font-size: 20px;
     font-weight: 800;
     letter-spacing: 2px;
-
     color: rgb(241, 241, 241);
-
     padding: 15px 30px 15px 30px;
     margin-top: 50px;
 }
@@ -75,4 +71,20 @@
     border-style: solid;
     color: rgb(241, 241, 241);
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.activity-area {
+    display: flex;
+    align-items: center;
+}
+
+.activity {
+    border-style: solid;
+    border-radius: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    padding: 10px;
+    font-size: 12px;
+    background-color: #8884d8;
+    color: white;
 }

@@ -155,6 +155,7 @@ function App() {
               {/* Journal Section */}
               {/* TODO: change to get name from API */}
               <CreateJournalConfirm
+                user_id={currentUser._id}
                 name={currentUser.username}
                 custom_activities={currentUser.custom_activities}
                 newCheckin={checkin}
