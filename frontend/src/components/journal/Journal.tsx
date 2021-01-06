@@ -31,7 +31,6 @@ export function Journal(props: Props) {
                 })
             .then(res => {
                 SetCheckins(res.data);
-                console.log(res);
             })
             .catch(err => {
                 // TODO: add error handling
@@ -51,10 +50,10 @@ export function Journal(props: Props) {
         return checkins.map((curCheckins, index) => {
             const { createdAt, mood, activities, title, notes } = curCheckins;
             
-            let timeOnly = true;
+            let timeAndDate = true;
             let date = new Date(createdAt)
-            if(prevDate && prevDate !== new Date(createdAt)) {
-                timeOnly = false;
+            if(prevDate && prevDate.toLocaleDateString() === new Date(createdAt).toLocaleDateString()) {
+                timeAndDate = false;
             }
             prevDate = date
             
@@ -67,9 +66,10 @@ export function Journal(props: Props) {
                     title={title}
                     notes={notes}
 
-                    timeOnly={timeOnly}
+                    timeAndDate={timeAndDate}
                 />
             );
+
 
     });
 }

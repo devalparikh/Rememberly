@@ -9,7 +9,7 @@ interface Props {
     activities: string[];
     title: string;
     notes: string;
-    timeOnly?: boolean;
+    timeAndDate?: boolean;
 }
 
 interface State {
@@ -28,15 +28,15 @@ class JournalCard extends React.Component<Props, State> {
         const moodEmojis = ["😕", "😐", "🙂", "😀", "😁"]
 
         let marginTop = "20px";
-        if (this.props.timeOnly) {
-            marginTop = "80px";
+        if (this.props.timeAndDate) {
+            marginTop = "140px";
         }
 
         return (
             <div className="outer-journal-card" style={{ marginTop: `${marginTop}` }}>
                 <div className="date-journal-card">
                     {
-                        this.props.timeOnly
+                        this.props.timeAndDate
                             ?
                             <div>
                                 {this.props.date.toLocaleDateString()}
