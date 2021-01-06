@@ -104,6 +104,14 @@
     border-width: 0px;
 }
 
+@media (max-width: 1024px) {
+    /* Disable hover style when using medium or less size */
+    .activity-bubble:hover {
+        background-color: #ffffff40;
+        color: white;
+    }
+}
+
 .somethingelse-input {
     margin-top: 10px;
     height: 50px;
@@ -129,7 +137,7 @@
     font-size: 40px;
     font-weight: 800;
     margin: 60px 0px 0px 0px;
-    color: #ffffffa6;   
+    color: #ffffffa6;
 }
 
 .input-confirm {
@@ -146,7 +154,7 @@
     font-size: 30px;
 }
 
-.input-confirm::placeholder{
+.input-confirm::placeholder {
     color: rgba(255, 255, 255, 0.514);
 }
 
@@ -155,5 +163,4 @@
     width: 600px;
     font-size: 20px;
     padding: 20px;
-
 }
