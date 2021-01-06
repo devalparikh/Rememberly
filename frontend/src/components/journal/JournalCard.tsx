@@ -34,16 +34,21 @@ class JournalCard extends React.Component<Props, State> {
 
         return (
             <div className="outer-journal-card" style={{ marginTop: `${marginTop}` }}>
+                {/* <div>
+                    {this.props.date.toLocaleTimeString([], {weekday: 'long'}).split(' ')[0]}
+                </div> */}
                 <div className="date-journal-card">
                     {
                         this.props.timeAndDate
                             ?
                             <div>
-                                {this.props.date.toLocaleDateString()}
+                                {this.props.date.toLocaleTimeString([], { weekday: 'long' }).split(' ')[0]}
+                                , {this.props.date.toLocaleDateString()}
                             </div>
                             :
                             <div style={{ opacity: "0%" }}>
-                                {this.props.date.toLocaleDateString()}
+                                {this.props.date.toLocaleTimeString([], { weekday: 'long' }).split(' ')[0]}
+                                , {this.props.date.toLocaleDateString()}
                             </div>
                     }
 

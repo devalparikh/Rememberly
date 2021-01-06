@@ -89,12 +89,14 @@ return (
 
         <div className="journal-card-group">
 
+            {/* TODO: Calander picker for chart and cards */}
+
             {/* Mood Chart */}
-            <MoodChart></MoodChart>
+            <MoodChart checkins={checkins}></MoodChart>
 
             <Button href="/journal/create" variant="flat">Check-In</Button>
 
-            {/* TODO: Iterate over cards from API and after 7th show button for full calendar */}
+            {/* Iterate over cards from API */}
             {displayCheckins()}
         </div>
     </div >

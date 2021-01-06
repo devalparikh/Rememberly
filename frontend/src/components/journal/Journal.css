@@ -76,6 +76,7 @@
 .activity-area {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .activity {

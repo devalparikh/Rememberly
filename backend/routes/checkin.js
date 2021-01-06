@@ -23,7 +23,6 @@ router.get('/', auth, async (req, res) => {
 // @access Private
 router.post('/', auth, async (req, res) => {
     const newCheckin = new Checkin(req.body);
-    console.log(newCheckin)
     newCheckin
         .save()
         .then(post => res.json(post))
