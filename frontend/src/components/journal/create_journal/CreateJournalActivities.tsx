@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './CreateJournal.css';
 import { Button } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
+import axios from 'axios';
 import { motion } from "framer-motion";
 
 interface Props {
@@ -25,9 +26,9 @@ export function CreateJournalActivities(props: Props) {
     const [newActivity, SetNewActivity] = useState("");
 
     useEffect(() => {
-        // TOOD: API call to get most recent activities
+
         // Combine defualt activities with custom user activities
-        SetActivities(activities.concat(custom_activities));
+        SetActivities([...activities, ...custom_activities]);
 
         if (selectedActivities && selectedActivities !== "none") {
 
@@ -40,7 +41,7 @@ export function CreateJournalActivities(props: Props) {
             // @ts-ignore
             SetCurSelectedActivities(curSelectedActivities.concat(customActivitesSelection));
         }
-    }, []);
+    }, [custom_activities]);
 
     // Animate next page slide
     let slideDirection = "100%";
@@ -81,10 +82,32 @@ export function CreateJournalActivities(props: Props) {
             // TODO: add error handling message
         } else {
             // TODO: API call add new activity
-            SetActivities(defaultActivities => [...defaultActivities, newActivity.toLowerCase()]);
-            SetNewActivity("");
+            axios
+                .put(`${process.env.REACT_APP_URL}/user/custom_activities`,
+                    {
+                        new_activity: newActivity.toLowerCase()
+                    },
+                    {
+                        headers: { 'x-auth-token': `${localStorage.usertoken}` }
+                    })
+                .then(res => {
 
-            SetCurSelectedActivities([...curSelectedActivities, 1]);
+                    console.log(res);
+
+                    // Add locally to client
+                    SetActivities(defaultActivities => [...defaultActivities, newActivity.toLowerCase()]);
+                    SetNewActivity("");
+
+                    SetCurSelectedActivities([...curSelectedActivities, 1]);
+
+                })
+                .catch(err => {
+                    // TODO: add error handling
+                    console.log(err);
+                    console.log(err.response.data.msg);
+
+                });
+
         }
 
     }

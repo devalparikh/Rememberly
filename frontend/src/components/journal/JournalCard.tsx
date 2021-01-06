@@ -27,8 +27,13 @@ class JournalCard extends React.Component<Props, State> {
     render() {
         const moodEmojis = ["😕", "😐", "🙂", "😀", "😁"]
 
+        let marginTop = "20px";
+        if (this.props.timeOnly) {
+            marginTop = "80px";
+        }
+
         return (
-            <div className="outer-journal-card">
+            <div className="outer-journal-card" style={{ marginTop: `${marginTop}` }}>
                 <div className="date-journal-card">
                     {
                         this.props.timeOnly
@@ -37,7 +42,9 @@ class JournalCard extends React.Component<Props, State> {
                                 {this.props.date.toLocaleDateString()}
                             </div>
                             :
-                            <div></div>
+                            <div style={{ opacity: "0%" }}>
+                                {this.props.date.toLocaleDateString()}
+                            </div>
                     }
 
                     <div>

@@ -33,10 +33,12 @@ db.once('open', () => {
 // Require and use model route files
 const authRouter = require('./routes/auth');
 const checkinRouter = require('./routes/checkin');
-
+const userRouter = require('./routes/user');
 
 app.use('/auth', authRouter);
 app.use('/checkin', checkinRouter);
+app.use('/user', userRouter);
+
 
 
 app.use(express.static('../frontend/build'));

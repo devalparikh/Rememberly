@@ -38,9 +38,8 @@ export function CreateJournalConfirm(props: Props) {
     useEffect(() => {
         // TOOD: API call to get most recent activities
         // Combine defualt activities with custom user activities
-        SetActivities(activities.concat(custom_activities));
-
-    }, []);
+        SetActivities([...activities, ...custom_activities]);
+    }, [custom_activities]);
 
     const displayActivities = () => {
 
@@ -71,7 +70,7 @@ export function CreateJournalConfirm(props: Props) {
     const submitCheckin = () => {
         let selectedActivitiesNames = [];
 
-        for(let i = 0; i < selectedActivities.length; i++) {
+        for (let i = 0; i < selectedActivities.length; i++) {
             if (selectedActivities.split(",").map(Number)[i]) {
                 selectedActivitiesNames.push(activities[i]);
             }
