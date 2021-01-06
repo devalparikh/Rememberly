@@ -121,10 +121,16 @@ function App() {
             </Route>
             <Route exact path="/journal">
               {/* Journal Section */}
-              <Journal
-                user_id={currentUser._id}
-                name={currentUser.username}
-              ></Journal>
+              {
+                localStorage.usertoken
+                  ?
+                  <Journal
+                    user_id={currentUser._id}
+                    name={currentUser.username}
+                  ></Journal>
+                  :
+                  <Login></Login>
+              }
             </Route>
 
             <Route exact path="/journal/create">
