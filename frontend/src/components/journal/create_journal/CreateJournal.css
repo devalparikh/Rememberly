@@ -57,7 +57,7 @@
     border: black;
     border-width: 2px;
     border-style: solid;
-    margin-right: 20px;
+    /* margin-right: 20px; */
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -118,4 +118,15 @@
     border-radius: 4px;
     background-color: rgba(0, 0, 0, .5);
     box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+/* Create Journal Confirm */
+
+.title-confirm {
+    font-size: 40px;
+    font-weight: 800;
+    margin: 60px 0px 0px 20%;
+    color: #ffffffa6;
+    text-align: left;
+    
 }

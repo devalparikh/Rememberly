@@ -4,11 +4,7 @@ import { Button } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import { iCheckin } from '../../../App';
-
 interface Props {
-    name: string;
-    newCheckin: iCheckin;
     custom_activities: [];
 }
 
@@ -20,7 +16,7 @@ interface ParamTypes {
 export function CreateJournalActivities(props: Props) {
 
     const { mood, selectedActivities } = useParams<ParamTypes>();
-    const { name, newCheckin, custom_activities } = props;
+    const { custom_activities } = props;
 
     const [activities, SetActivities] = useState(["sports", "lifting", "writing", "drawing", "family", "friends"]);
     const [curSelectedActivities, SetCurSelectedActivities] = useState([0, 0, 0, 0, 0, 0]);
@@ -29,10 +25,16 @@ export function CreateJournalActivities(props: Props) {
     const [newActivity, SetNewActivity] = useState("");
 
     useEffect(() => {
+        // TOOD: API call to get most recent activities
+        // Combine defualt activities with custom user activities
+        SetActivities(activities.concat(custom_activities));
+
         if (selectedActivities && selectedActivities !== "none") {
-            SetActivities(selectedActivities.split(","));
+
+            console.log(selectedActivities.split(","));
+            // @ts-ignore
+            SetCurSelectedActivities(selectedActivities.split(",").map(Number));
         } else {
-            SetActivities(activities.concat(custom_activities));
 
             const customActivitesSelection = new Array(custom_activities.length).fill(0);
             // @ts-ignore
@@ -48,10 +50,9 @@ export function CreateJournalActivities(props: Props) {
     }
 
     const handleActivitySelect = (index: any) => {
-        let new_curSelectedActivities = curSelectedActivities;
-        new_curSelectedActivities[index] = 1;
+        let new_curSelectedActivities = [...curSelectedActivities]; // copy 
+        new_curSelectedActivities[index] ^= 1; // toggle bit flip
         SetCurSelectedActivities(new_curSelectedActivities);
-        console.log(curSelectedActivities);
     }
 
     const displayActivities = () => {
@@ -63,7 +64,9 @@ export function CreateJournalActivities(props: Props) {
                         type="checkbox"
                         name="activity"
                         value={index}
-                        onChange={() => handleActivitySelect(index)} />
+                        checked={Boolean(curSelectedActivities[index])}
+                        onChange={() => handleActivitySelect(index)}
+                    />
                     <div className="activity-bubble btn-custom">
                         {curActivity}
                     </div>
@@ -77,11 +80,11 @@ export function CreateJournalActivities(props: Props) {
         if (activities.includes(newActivity.toLowerCase())) {
             // TODO: add error handling message
         } else {
-            // API call add new activity
+            // TODO: API call add new activity
             SetActivities(defaultActivities => [...defaultActivities, newActivity.toLowerCase()]);
             SetNewActivity("");
 
-            SetCurSelectedActivities([...curSelectedActivities, 0]);
+            SetCurSelectedActivities([...curSelectedActivities, 1]);
         }
 
     }

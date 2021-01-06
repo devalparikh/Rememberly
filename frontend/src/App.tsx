@@ -140,19 +140,13 @@ function App() {
             <Route exact path="/journal/create/mood/:mood">
               {/* Journal Section */}
               {/* TODO: change to get name from API */}
-              <CreateJournalMood
-                name={currentUser.username}
-                newCheckin={checkin}
-                setCheckin={(updatedCheckin: iCheckin): void => { SetCheckin(updatedCheckin) }}
-              ></CreateJournalMood>
+              <CreateJournalMood></CreateJournalMood>
             </Route>
 
             <Route exact path="/journal/create/mood/:mood/activities/:selectedActivities">
               {/* Journal Section */}
               {/* TODO: change to get name from API */}
               <CreateJournalActivities
-                name={currentUser.username}
-                newCheckin={checkin}
                 custom_activities={currentUser.custom_activities}
               ></CreateJournalActivities>
             </Route>
@@ -162,7 +156,9 @@ function App() {
               {/* TODO: change to get name from API */}
               <CreateJournalConfirm
                 name={currentUser.username}
+                custom_activities={currentUser.custom_activities}
                 newCheckin={checkin}
+                setCheckin={(updatedCheckin: iCheckin): void => { SetCheckin(updatedCheckin) }}
               ></CreateJournalConfirm>
             </Route>
 

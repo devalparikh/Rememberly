@@ -5,12 +5,8 @@ import RangeSlider from 'react-bootstrap-range-slider';
 import Moods from '../Moods';
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
-import { iCheckin } from '../../../App';
 
 interface Props {
-    name: string;
-    newCheckin: iCheckin;
-    setCheckin: (updatedCheckin: iCheckin) => void;
 }
 
 interface ParamTypes {
@@ -21,7 +17,6 @@ interface ParamTypes {
 export function CreateJournalMood(props: Props) {
 
     const { mood } = useParams<ParamTypes>();
-    const { name, newCheckin, setCheckin } = props;
 
     const [val, setVal] = useState(parseInt(mood) || 0);
 
