@@ -18,6 +18,10 @@ nav {
     z-index: 1;
 }
 
+.nav-disabled-buttons li {
+    pointer-events: none;
+}
+
 .nav-button {
     outline: none;
     border: none;

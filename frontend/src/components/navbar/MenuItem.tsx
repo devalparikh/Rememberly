@@ -16,6 +16,7 @@ const variants = {
         transition: {
             y: { stiffness: 1000 }
         },
+        zIndex: -2
     }
 };
 

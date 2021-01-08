@@ -32,8 +32,12 @@ export const NavBar2 = () => {
     const containerRef = useRef(null);
     // const { height } = useDimensions(containerRef);
 
+    // Force disable navigation buttons when closed
+    let menuStyleClass = isOpen ? "" : "nav-disabled-buttons";
+
     return (
         <motion.nav
+            className={menuStyleClass}
             initial={false}
             animate={isOpen ? "open" : "closed"}
             // custom={height}

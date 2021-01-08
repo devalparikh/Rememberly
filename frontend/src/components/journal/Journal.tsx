@@ -115,6 +115,11 @@ export function Journal(props: Props) {
             </div>
 
             <div className="journal-card-group">
+
+                {/* Mood Chart */}
+                <MoodChart checkins={checkins}></MoodChart>
+
+                <Button href="/journal/create" variant="flat">Check-In</Button>
                 <div className="title">
 
                 </div>
@@ -146,12 +151,6 @@ export function Journal(props: Props) {
                     }}
                     readOnly
                 />
-
-                {/* Mood Chart */}
-                <MoodChart checkins={checkins}></MoodChart>
-
-                <Button href="/journal/create" variant="flat">Check-In</Button>
-
                 {/* Iterate over cards from API */}
                 {displayCheckins()}
             </div>
