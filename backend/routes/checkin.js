@@ -22,18 +22,19 @@ router.get('/', auth, async (req, res) => {
 // @desc Get all of users checkin in date range
 // @access Private
 router.get('/:start_date/:end_date', auth, async (req, res) => {
+    const start = new Date(req.params.start_date);
+    const end = new Date(req.params.end_date);
+    console.log(start.getFullYear())
     // Get posts using the user_id from jwt
     Checkin
         .find(
             {
-                user_id: req.user.id
-            },
-            {
+                user_id: req.user.id,
                 createdAt: {
-                    $gte: req.params.start_date,
-                    $lte: req.params.end_date
+                    $gte: start,
+                    $lte: end
                 }
-            }
+            },
         )
         .sort([['createdAt', -1]]) // find() returns promise
         .then(posts => res.json(posts)) // returns Posts

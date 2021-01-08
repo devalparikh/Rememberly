@@ -39,6 +39,7 @@ interface iUser {
   email: string;
   username: string;
   custom_activities: [];
+  createdAt: Date;
 }
 
 export interface iCheckin {
@@ -59,7 +60,8 @@ function App() {
     _id: "",
     email: "",
     username: "",
-    custom_activities: []
+    custom_activities: [],
+    createdAt: new Date()
   }
   const [currentUser, setCurrentUser] = useState<iUser>(currentUserDefault);
 
@@ -127,6 +129,7 @@ function App() {
                   <Journal
                     user_id={currentUser._id}
                     name={currentUser.username}
+                    userCreatedAt={currentUser.createdAt}
                   ></Journal>
                   :
                   <Login></Login>
