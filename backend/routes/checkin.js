@@ -24,7 +24,7 @@ router.get('/', auth, async (req, res) => {
 router.get('/:start_date/:end_date', auth, async (req, res) => {
     const start = new Date(req.params.start_date);
     const end = new Date(req.params.end_date);
-    console.log(start.getFullYear())
+
     // Get posts using the user_id from jwt
     Checkin
         .find(

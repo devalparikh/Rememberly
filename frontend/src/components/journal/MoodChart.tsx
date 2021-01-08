@@ -78,7 +78,7 @@ export function JournalCard(props: Props) {
                 mood: mood,
                 habits: 3
             });
-            
+
             // @ts-ignore
             setData([...temp].reverse());
         }

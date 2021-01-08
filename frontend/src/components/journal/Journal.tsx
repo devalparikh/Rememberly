@@ -11,7 +11,7 @@ import {
     Button
 } from 'react-bootstrap'
 import { create } from 'domain';
-import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
@@ -33,6 +33,15 @@ export function Journal(props: Props) {
 
 
     useEffect(() => {
+
+        // Refresh when coming from creating a new checkin
+        if (String(document.referrer).includes("confirm")) {
+            // @ts-ignore
+            window.location = window.location.href;
+        }
+
+        if (!startDate || !endDate) return;
+
         const start = startDate.toDate()
         const end = endDate.toDate()
 
@@ -48,14 +57,13 @@ export function Journal(props: Props) {
                 // TODO: add error handling
                 if (err && err.response && err.response.data) {
                     console.log(err.response.data.msg);
-
                 } else {
-                    // localStorage.removeItem("usertoken");
-                    // // @ts-ignore
-                    // window.location = '/login';
+                    localStorage.removeItem("usertoken");
+                    // @ts-ignore
+                    window.location = '/login';
                 }
             });
-    }, []);
+    }, [startDate, endDate]);
 
     const displayCheckins = () => {
 
@@ -107,11 +115,11 @@ export function Journal(props: Props) {
             </div>
 
             <div className="journal-card-group">
+                <div className="title">
 
-                {/* TODO: Calander picker for chart and cards */}
-
+                </div>
+                {/* Calander date picker for chart and cards */}
                 <DateRangePicker
-
                     startDate={moment(startDate)}
                     startDateId="startDateId"
                     endDate={moment(endDate)}
@@ -131,11 +139,12 @@ export function Journal(props: Props) {
                     minDate={moment(userCreatedAt)}
                     isOutsideRange={(day) => {
                         if (day.isSameOrAfter(moment(userCreatedAt))
-                            && day.isSameOrBefore(moment(new Date()))) {
+                            && day.isSameOrBefore(moment(new Date()).add(1, 'days'))) {
                             return false;
                         }
                         return true;
                     }}
+                    readOnly
                 />
 
                 {/* Mood Chart */}
