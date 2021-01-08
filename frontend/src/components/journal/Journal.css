@@ -104,6 +104,8 @@
 }
 
 .DateInput_input:hover {
+    background: #8884d8!important;
+    color: white!important;
     font-weight: 300!important;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) !important;
 }
@@ -111,8 +113,9 @@
 @media (max-width: 1024px) {
     /* Disable hover style when using medium or less size */
     .DateInput_input:hover {
-        background: #8884d8!important;
-        color: white!important;
+        background: white!important;
+        color: black!important;
+        font-weight: 200!important;
     }
 }
 
@@ -147,7 +150,7 @@
     border-color: 8884d8!important;
 }
 
-.DateRangePicker_picker{
+.DateRangePicker_picker {
     border-radius: 20px!important;
     background-color: transparent;
 }
