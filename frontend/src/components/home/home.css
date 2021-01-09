@@ -1,0 +1,14 @@
+.landing-bg {
+    background-color: #aeace4;
+}
+
+.landing-title {
+    text-align: left;
+}
+
+.landing-sub-title {
+    text-align: left;
+    font-size: 30px;
+    font-weight: 200;
+    margin: -60px 20px 0px 0px;
+}

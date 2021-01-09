@@ -102,7 +102,7 @@ export function JournalCard(props: Props) {
         <div>
             <div className="title">
                 Log
-                </div>
+            </div>
             <div className="journal-graph-card">
                 {/* <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
                         <Line type="monotone" dataKey="uv" stroke="#8884d8" />
@@ -118,6 +118,7 @@ export function JournalCard(props: Props) {
                     <Line type="monotone" dataKey="habits" stroke="#B6CAD4" strokeDasharray="5 5" />
 
                     <XAxis dataKey="name" />
+
                     <Tooltip />
                     <Legend />
 
