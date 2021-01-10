@@ -55,12 +55,13 @@ export function Journal(props: Props) {
             })
             .catch(err => {
                 // TODO: add error handling
+                // TODO: remove usertoken before allowing a new checkin if 401 error
                 if (err && err.response && err.response.data) {
                     console.log(err.response.data.msg);
                 } else {
-                    localStorage.removeItem("usertoken");
-                    // @ts-ignore
-                    window.location = '/login';
+                    // localStorage.removeItem("usertoken");
+                    // // @ts-ignore
+                    // window.location = '/login';
                 }
             });
     }, [startDate, endDate]);
