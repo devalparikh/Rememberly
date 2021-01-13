@@ -46,7 +46,7 @@ function LandingPage() {
                 </Container>
             </div>
             <div>
-                {AnimatedPhoneMockup()}
+                <AnimatedPhoneMockup />
 
             </div>
             <div style={{ backgroundColor: "#f1f3f4" }}>

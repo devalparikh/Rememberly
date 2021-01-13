@@ -55,9 +55,16 @@ export function Journal(props: Props) {
             })
             .catch(err => {
                 // TODO: add error handling
-                // TODO: remove usertoken before allowing a new checkin if 401 error
+                // TODO: remove usertoken before allowing a new checkin if 401 error (not 400)
+                if (err && err.response && err.response.status == 400) {
+                    console.log("invalid token")
+                    localStorage.removeItem("usertoken");
+                    // @ts-ignore
+                    window.location = '/login';
+                }
                 if (err && err.response && err.response.data) {
                     console.log(err.response.data.msg);
+
                 } else {
                     // localStorage.removeItem("usertoken");
                     // // @ts-ignore

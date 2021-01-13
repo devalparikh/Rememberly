@@ -5,7 +5,7 @@ import {
     Button,
 } from 'react-bootstrap'
 
-import ClayIphone from '../../../images/clay-iphone-title.png';
+import ClayIphone from '../../../images/clay-iphone-title2.png';
 import ClayIphoneSmall from '../../../images/clay-iphone-title-small.png';
 
 
@@ -49,10 +49,10 @@ function AnimatedPhoneMockup() {
 
                         <motion.div style={{
                             scale: "0.8",
-                            margin: "30% 0 0 46%",
+                            margin: "29% 0 0 46%",
                             position: "absolute"
                         }}>
-                            <Button style={{ backgroundColor: "#c4c2f1" }} variant="flat">exercise</Button>
+                            <Button style={{ backgroundColor: "#c4c2f1" }} variant="flat">shopping</Button>
                         </motion.div>
 
                         <motion.div style={{
@@ -60,14 +60,14 @@ function AnimatedPhoneMockup() {
                             margin: "43% 0 0 40%",
                             position: "absolute"
                         }}>
-                            <Button style={{ backgroundColor: "#c4c2f1" }} variant="flat">exercise</Button>
+                            <Button style={{ backgroundColor: "#c4c2f1" }} variant="flat">gaming</Button>
                         </motion.div>
 
                         <motion.div style={{
                             rotate: RotateRange_button2,
                             scale: yRange_button2,
                             position: "absolute",
-                            margin: "23% 0 0 38%"
+                            margin: "23% 0 0 40%"
                         }}>
                             <Button variant="flat">friends</Button>
                         </motion.div>
@@ -113,9 +113,9 @@ function AnimatedPhoneMockup() {
 
     return (
         <div>
-
-            {ScrollIphone()}
-
+            <div>
+                {ScrollIphone()}
+            </div>
         </div >
     );
 }
