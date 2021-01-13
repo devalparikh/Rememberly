@@ -13,7 +13,7 @@ import NavBarCustom from './components/navbar/NavBarCustom';
 import NavBar2 from './components/navbar/NavBar2';
 
 // Landing Page
-import LandingPage from './components/home/LandingPage';
+import LandingPage from './components/home/landing/LandingPage';
 
 // Main Memory Section
 import Memory from './components/memory/Memory';

@@ -17,6 +17,29 @@
     .landing-mockup {
         margin: 100px 0px 0px 0px;
         height: 500px;
+    }   
+}
+
+.animated-mockup-big {
+    background-color: #c8d1db;
+    overflow: hidden;
+}
+
+.animated-mockup-small {
+    background-color: #c8d1db;
+    overflow: hidden;
+}
+
+@media (max-width: 1023px) {
+    .animated-mockup-big {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .animated-mockup-small {
+        display: none;
     }
     
 }
+
