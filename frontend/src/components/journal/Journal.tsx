@@ -132,6 +132,7 @@ export function Journal(props: Props) {
 
                 </div>
                 {/* Calander date picker for chart and cards */}
+                <div className="date-journal-card">Select Date Range</div>
                 <DateRangePicker
                     startDate={moment(startDate)}
                     startDateId="startDateId"

@@ -32,6 +32,27 @@ class JournalCard extends React.Component<Props, State> {
             marginTop = "140px";
         }
 
+        let outlineClass = "";
+        switch (this.props.mood) {
+            case 0:
+                outlineClass = "red-outline";
+                break;
+            case 1:
+                outlineClass = "orange-outline";
+                break;
+            case 2:
+                outlineClass = "gray-outline";
+                break;
+            case 3:
+                outlineClass = "yellow-outline";
+                break;
+            case 4:
+                outlineClass = "green-outline";
+
+        }
+
+        let JournalCardClass = `journal-card ${outlineClass}`;
+
         return (
             <div className="outer-journal-card" style={{ marginTop: `${marginTop}` }}>
                 {/* <div>
@@ -41,14 +62,14 @@ class JournalCard extends React.Component<Props, State> {
                     {
                         this.props.timeAndDate
                             ?
-                            <div>
+                            <div className="date-title-journal-card">
                                 {this.props.date.toLocaleTimeString([], { weekday: 'long' }).split(' ')[0]}
                                 , {this.props.date.toLocaleDateString()}
                             </div>
                             :
                             <div style={{ opacity: "0%" }}>
-                                {this.props.date.toLocaleTimeString([], { weekday: 'long' }).split(' ')[0]}
-                                , {this.props.date.toLocaleDateString()}
+                                {/* {this.props.date.toLocaleTimeString([], { weekday: 'long' }).split(' ')[0]}
+                                , {this.props.date.toLocaleDateString()} */}
                             </div>
                     }
 
@@ -56,7 +77,7 @@ class JournalCard extends React.Component<Props, State> {
                         {this.props.date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </div>
                 </div>
-                <div className="journal-card">
+                <div className={JournalCardClass}>
 
                     <div className="title-journal-card">
                         {this.props.title}
@@ -77,7 +98,13 @@ class JournalCard extends React.Component<Props, State> {
                         </div>
                     </div>
                     <div>
-                        Notes: {this.props.notes}
+                        {
+                            this.props.notes
+                                ?
+                                <div>Notes : {this.props.notes}</div>
+                                :
+                                <div></div>
+                        }
                     </div>
                 </div>
             </div>
