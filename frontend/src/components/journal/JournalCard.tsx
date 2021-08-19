@@ -101,7 +101,7 @@ class JournalCard extends React.Component<Props, State> {
                         {
                             this.props.notes
                                 ?
-                                <div>Notes : {this.props.notes}</div>
+                                <div className="note">Notes: {this.props.notes}</div>
                                 :
                                 <div></div>
                         }

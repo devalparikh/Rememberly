@@ -124,6 +124,10 @@
     color: white;
 }
 
+.note {
+    white-space: pre-wrap;
+}
+
 /* Date Picker */
 
 .DateRangePickerInput__withBorder {
