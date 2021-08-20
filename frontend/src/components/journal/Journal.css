@@ -1,5 +1,5 @@
 .journal-graph-card {
-    margin-left: 10px;
+    margin: 60px 0px 60px 10px
 }
 
 .journal-card-group {
@@ -95,8 +95,7 @@
     letter-spacing: 2px;
     color: rgb(241, 241, 241);
     padding: 15px 30px 15px 30px;
-    margin-top: 50px;
-    margin: 50px 10px 0px 10px;
+    margin: 20px 10px 20px 10px;
 }
 
 .btn-flat:hover {
@@ -108,19 +107,34 @@
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
+.btn-checkin {
+    margin: 60px 0px 60px 0px
+}
+
 .btn-date {
     font-size: 12px;
     font-weight: 300;
-    padding: 12px 20px 12px 20px;
     border: 1px solid;
     border-radius: 20px;
     color: #484848;
     background-color: #fff;
+    padding: 12px 20px 12px 20px;
+    margin: 20px 10px 60px 10px;
 }
 
 .selected {
     color: #fff;
     background-color: #807cc7;
+}
+
+.search-box {
+    font-weight: 300;
+    border: 1px solid;
+    border-radius: 20px;
+    color: #484848;
+    padding: 10px 20px 10px 20px;
+    width: 60%;
+    margin: 10px
 }
 
 .activity-area {
@@ -149,7 +163,8 @@
 .DateRangePickerInput__withBorder {
     border-radius: 20px!important;
     padding: 10px!important;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2)!important;
+    margin: 10px!important;
 }
 
 .DateInput_input {

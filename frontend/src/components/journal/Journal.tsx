@@ -20,14 +20,16 @@ interface Props {
 export function Journal(props: Props) {
   const { name, userCreatedAt } = props;
 
-  const [checkins, SetCheckins] = useState([]);
+  const [checkins, setCheckins] = useState([]);
   const [startDate, setStartDate] = useState(
     moment(new Date()).subtract(1, "weeks")
   );
   const [endDate, setEndDate] = useState(moment(new Date()));
-  const [FocusedInput, SetFocusedInput] = useState();
+  const [FocusedInput, setFocusedInput] = useState();
 
-  const [selectedTimeUnit, SetSelectedTimeUnit] = useState("weeks");
+  const [selectedTimeUnit, setSelectedTimeUnit] = useState("weeks");
+
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     // Refresh when coming from creating a new checkin
@@ -46,7 +48,8 @@ export function Journal(props: Props) {
         headers: { "x-auth-token": `${localStorage.usertoken}` },
       })
       .then((res) => {
-        SetCheckins(res.data);
+        console.log('recieved checkins from db')
+        setCheckins(res.data);
       })
       .catch((err) => {
         // TODO: add error handling
@@ -67,51 +70,80 @@ export function Journal(props: Props) {
       });
   }, [startDate, endDate]);
 
-  const displayCheckins = () => {
-    if (checkins.length === 0) {
+  const getCheckins = () => {
+    let prevDate: Date;
+    console.log("fetching and searching checkins");
+    return checkins
+      .filter((curCheckins) => {
+        // Search filtering
+        const { createdAt, mood, activities, title, notes } = curCheckins;
+        let isSearchedFor = true;
+        if (search) {
+          const createdAtString = String(createdAt).toLowerCase();
+          const titleString = String(title).toLowerCase();
+          const notesString = String(notes).toLowerCase();
+          isSearchedFor = [
+            createdAtString,
+            titleString,
+            notesString,
+            ...activities,
+          ]
+            .join("")
+            .includes(search);
+        }
+        return isSearchedFor;
+      })
+      .map((curCheckins) => {
+        const { createdAt, mood, activities, title, notes } = curCheckins;
+
+        let timeAndDate = true;
+        let date = new Date(createdAt);
+        if (
+          prevDate &&
+          prevDate.toLocaleDateString() ===
+            new Date(createdAt).toLocaleDateString()
+        ) {
+          timeAndDate = false;
+        }
+        prevDate = date;
+
+        return { date, mood, activities, title, notes, timeAndDate };
+      });
+  };
+
+  const displayCheckins = (checkins: any) => {
+    if (checkins.length > 0) {
+      return checkins.map((curCheckins: any, index: number) => {
+        const { date, mood, activities, title, notes, timeAndDate } =
+          curCheckins;
+        return (
+          <JournalCard
+            date={date}
+            mood={mood}
+            activities={activities}
+            title={title}
+            notes={notes}
+            timeAndDate={timeAndDate}
+            key={index}
+          />
+        );
+      });
+    } else {
       return (
         <div className="title" style={{ color: "#646569" }}>
-          Welcome! Create your first check-in.
+          No Check-ins found
         </div>
       );
     }
-
-    let prevDate: Date;
-    return checkins.map((curCheckins, index) => {
-      const { createdAt, mood, activities, title, notes } = curCheckins;
-
-      let timeAndDate = true;
-      let date = new Date(createdAt);
-      if (
-        prevDate &&
-        prevDate.toLocaleDateString() ===
-          new Date(createdAt).toLocaleDateString()
-      ) {
-        timeAndDate = false;
-      }
-      prevDate = date;
-
-      return (
-        <JournalCard
-          // TODO: Replace with read data for cur card
-          date={date}
-          mood={mood}
-          activities={activities}
-          title={title}
-          notes={notes}
-          timeAndDate={timeAndDate}
-        />
-      );
-    });
   };
 
   const handleDateFilterButtons = (timeUnit?: any) => {
     if (timeUnit) {
       setStartDate(moment(new Date()).subtract(1, timeUnit));
-      SetSelectedTimeUnit(timeUnit);
+      setSelectedTimeUnit(timeUnit);
     } else {
       setStartDate(moment(userCreatedAt));
-      SetSelectedTimeUnit("allTime");
+      setSelectedTimeUnit("allTime");
     }
   };
 
@@ -126,12 +158,14 @@ export function Journal(props: Props) {
           </Row>
         </Container>
       </div>
-
       <div className="journal-card-group">
-        {/* Mood Chart */}
-        <MoodChart checkins={checkins}></MoodChart>
+        <Button href="/journal/create" variant="flat btn-checkin">
+          + Check-In
+        </Button>
 
-        <div className="title"></div>
+        {/* Mood Chart */}
+        <MoodChart checkins={checkins} />
+
         {/* Calander date picker for chart and cards */}
         <div className="date-journal-card">Select Date Range</div>
         <DateRangePicker
@@ -145,10 +179,11 @@ export function Journal(props: Props) {
             setEndDate(endDate);
             // @ts-ignore
             setStartDate(startDate);
+            setSelectedTimeUnit("");
           }}
           onFocusChange={(arg) => {
             // @ts-ignore
-            SetFocusedInput(arg);
+            setFocusedInput(arg);
           }}
           orientation="vertical"
           minDate={moment(userCreatedAt)}
@@ -211,11 +246,19 @@ export function Journal(props: Props) {
             </Button>
           </ButtonGroup>
         </div>
-        <Button href="/journal/create" variant="flat">
-          Check-In
-        </Button>
+
+        <div className="date-journal-card">Search & Filter ()</div>
+        <input
+          type="text"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+          className="search-box"
+          placeholder="Search..."
+        ></input>
+
         {/* Iterate over cards from API */}
-        {displayCheckins()}
+        {displayCheckins(getCheckins())}
+        {}
       </div>
     </div>
   );

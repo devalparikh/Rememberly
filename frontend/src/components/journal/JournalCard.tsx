@@ -91,7 +91,7 @@ class JournalCard extends React.Component<Props, State> {
                             {
                                 this.props.activities.map((curActivity, index) => {
                                     return (
-                                        <div className="activity">{curActivity}</div>
+                                        <div key={index} className="activity">{curActivity}</div>
                                     );
                                 })
                             }
