@@ -118,6 +118,11 @@
     background-color: #fff;
 }
 
+.selected {
+    color: #fff;
+    background-color: #807cc7;
+}
+
 .activity-area {
     display: flex;
     align-items: center;

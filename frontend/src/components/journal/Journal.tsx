@@ -4,7 +4,7 @@ import JournalCard from "./JournalCard";
 import MoodChart from "./MoodChart";
 import Moods from "./Moods";
 import axios from "axios";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, ButtonGroup } from "react-bootstrap";
 import { create } from "domain";
 import { DateRangePicker } from "react-dates";
 import moment from "moment";
@@ -22,10 +22,12 @@ export function Journal(props: Props) {
 
   const [checkins, SetCheckins] = useState([]);
   const [startDate, setStartDate] = useState(
-    moment(new Date()).subtract(5, "days")
+    moment(new Date()).subtract(1, "weeks")
   );
   const [endDate, setEndDate] = useState(moment(new Date()));
   const [FocusedInput, SetFocusedInput] = useState();
+
+  const [selectedTimeUnit, SetSelectedTimeUnit] = useState("weeks");
 
   useEffect(() => {
     // Refresh when coming from creating a new checkin
@@ -103,6 +105,16 @@ export function Journal(props: Props) {
     });
   };
 
+  const handleDateFilterButtons = (timeUnit?: any) => {
+    if (timeUnit) {
+      setStartDate(moment(new Date()).subtract(1, timeUnit));
+      SetSelectedTimeUnit(timeUnit);
+    } else {
+      setStartDate(moment(userCreatedAt));
+      SetSelectedTimeUnit("allTime");
+    }
+  };
+
   return (
     <div>
       <div className="dark">
@@ -152,42 +164,52 @@ export function Journal(props: Props) {
           readOnly
         />
         <div>
-          <Button
-            onClick={() => {
-              setStartDate(moment(new Date()).subtract(1, "weeks"));
-            }}
-            variant="flat"
-            className="btn-date"
-          >
-            Week
-          </Button>
-          <Button
-            onClick={() => {
-              setStartDate(moment(new Date()).subtract(1, "months"));
-            }}
-            variant="flat"
-            className="btn-date"
-          >
-            Month
-          </Button>
-          <Button
-            onClick={() => {
-              setStartDate(moment(new Date()).subtract(1, "years"));
-            }}
-            variant="flat"
-            className="btn-date"
-          >
-            Year
-          </Button>
-          <Button
-            onClick={() => {
-              setStartDate(moment(userCreatedAt));
-            }}
-            variant="flat"
-            className="btn-date"
-          >
-            All Time
-          </Button>
+          <ButtonGroup>
+            <Button
+              onClick={() => {
+                handleDateFilterButtons("weeks");
+              }}
+              variant="flat"
+              className={`btn-date ${
+                selectedTimeUnit === "weeks" && "selected"
+              }`}
+            >
+              Week
+            </Button>
+            <Button
+              onClick={() => {
+                handleDateFilterButtons("months");
+              }}
+              variant="flat"
+              className={`btn-date ${
+                selectedTimeUnit === "months" && "selected"
+              }`}
+            >
+              Month
+            </Button>
+            <Button
+              onClick={() => {
+                handleDateFilterButtons("years");
+              }}
+              variant="flat"
+              className={`btn-date ${
+                selectedTimeUnit === "years" && "selected"
+              }`}
+            >
+              Year
+            </Button>
+            <Button
+              onClick={() => {
+                handleDateFilterButtons();
+              }}
+              variant="flat"
+              className={`btn-date ${
+                selectedTimeUnit === "allTime" && "selected"
+              }`}
+            >
+              All Time
+            </Button>
+          </ButtonGroup>
         </div>
         <Button href="/journal/create" variant="flat">
           Check-In
