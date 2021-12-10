@@ -1,225 +1,227 @@
 .journal-graph-card {
-    margin: 60px 0px 60px 10px
+  margin: 60px 0px 60px 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .journal-card-group {
-    margin: auto;
-    text-align: center;
-    max-width: 600px;
+  margin: auto;
+  text-align: center;
+  max-width: 600px;
 }
 
 .outer-journal-card {
-    margin-top: 80px;
+  margin-top: 80px;
 }
 
 .journal-card {
-    /* Text */
-    font-weight: 300;
-    text-align: left;
-    /* Border */
-    border-style: solid;
-    border-width: 0px;
-    border-radius: 20px;
-    border-color: white;
-    /* Spacing */
-    padding: 60px;
-    max-width: 600px;
-    margin: 10px;
-    /* Shadows */
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  /* Text */
+  font-weight: 300;
+  text-align: left;
+  /* Border */
+  border-style: solid;
+  border-width: 0px;
+  border-radius: 20px;
+  border-color: white;
+  /* Spacing */
+  padding: 60px;
+  max-width: 600px;
+  margin: 10px;
+  /* Shadows */
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .green-outline {
-    border-color: green;
-    box-shadow: 0 8px 16px 0 green;
+  border-color: green;
+  box-shadow: 0 8px 16px 0 green;
 }
 
 .yellow-outline {
-    border-color: yellow;
-    box-shadow: 0 8px 16px 0 yellow;
+  border-color: yellow;
+  box-shadow: 0 8px 16px 0 yellow;
 }
 
 .gray-outline {
-    border-color: #282c34;
-    box-shadow: 0 8px 16px 0 #282c34;
+  border-color: #282c34;
+  box-shadow: 0 8px 16px 0 #282c34;
 }
 
 .orange-outline {
-    border-color: orange;
-    box-shadow: 0 8px 16px 0 orange;
+  border-color: orange;
+  box-shadow: 0 8px 16px 0 orange;
 }
 
 .red-outline {
-    border-color: #dd4875;
-    box-shadow: 0 8px 16px 0 #dd4875;
+  border-color: #dd4875;
+  box-shadow: 0 8px 16px 0 #dd4875;
 }
 
 .journal-card:hover {
-    border-width: 2px;
-    border-color: #282c34;
-    box-shadow: none;
+  border-width: 2px;
+  border-color: #282c34;
+  box-shadow: none;
 }
 
 .date-journal-card {
-    /* Text */
-    font-size: 20px;
-    color: #646569;
-    font-weight: 800;
-    /* Spacing */
-    /* display: flex; */
-    /* flex-direction: row; */
-    justify-content: space-around;
-    margin: 0px 10px 0px 10px;
+  /* Text */
+  font-size: 20px;
+  color: #646569;
+  font-weight: 800;
+  /* Spacing */
+  /* display: flex; */
+  /* flex-direction: row; */
+  justify-content: space-around;
+  margin: 0px 10px 0px 10px;
 }
 
 .date-title-journal-card {
-    color: #282c34;
-    margin-bottom: 50px;
-    font-size: 30px;
-    text-decoration-line: underline;
+  color: #282c34;
+  margin-bottom: 50px;
+  font-size: 30px;
+  text-decoration-line: underline;
 }
 
 .title-journal-card {
-    font-size: 30px;
-    color: #646569;
-    font-weight: 800;
-    margin-bottom: 10px;
+  font-size: 30px;
+  color: #646569;
+  font-weight: 800;
+  margin-bottom: 10px;
 }
 
 .btn-flat {
-    background-color: #8884d8;
-    border: black;
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    color: rgb(241, 241, 241);
-    padding: 15px 30px 15px 30px;
-    margin: 20px 10px 20px 10px;
+  background-color: #8884d8;
+  border: black;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: rgb(241, 241, 241);
+  padding: 15px 30px 15px 30px;
+  margin: 20px 10px 20px 10px;
 }
 
 .btn-flat:hover {
-    background-color: #807cc7;
-    border: black;
-    border-width: 2px;
-    border-style: solid;
-    color: rgb(241, 241, 241);
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  background-color: #807cc7;
+  border: black;
+  border-width: 2px;
+  border-style: solid;
+  color: rgb(241, 241, 241);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .btn-checkin {
-    margin: 60px 0px 60px 0px
+  margin: 60px 0px 60px 0px;
 }
 
 .btn-date {
-    font-size: 12px;
-    font-weight: 300;
-    border: 1px solid;
-    border-radius: 20px;
-    color: #484848;
-    background-color: #fff;
-    padding: 12px 20px 12px 20px;
-    margin: 20px 10px 60px 10px;
+  font-size: 12px;
+  font-weight: 300;
+  border: 1px solid;
+  border-radius: 20px;
+  color: #484848;
+  background-color: #fff;
+  padding: 12px 20px 12px 20px;
+  margin: 20px 10px 60px 10px;
 }
 
 .selected {
-    color: #fff;
-    background-color: #807cc7;
+  color: #fff;
+  background-color: #807cc7;
 }
 
 .search-box {
-    font-weight: 300;
-    border: 1px solid;
-    border-radius: 20px;
-    color: #484848;
-    padding: 10px 20px 10px 20px;
-    width: 60%;
-    margin: 10px
+  font-weight: 300;
+  border: 1px solid;
+  border-radius: 20px;
+  color: #484848;
+  padding: 10px 20px 10px 20px;
+  width: 60%;
+  margin: 10px;
 }
 
 .activity-area {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .activity {
-    border-style: solid;
-    border-radius: 10px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    padding: 5px 10px 5px 10px;
-    font-size: 12px;
-    background-color: #8884d8;
-    color: white;
+  border-style: solid;
+  border-radius: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding: 5px 10px 5px 10px;
+  font-size: 12px;
+  background-color: #8884d8;
+  color: white;
 }
 
 .note {
-    white-space: pre-wrap;
+  white-space: pre-wrap;
 }
 
 /* Date Picker */
 
 .DateRangePickerInput__withBorder {
-    border-radius: 20px!important;
-    padding: 10px!important;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2)!important;
-    margin: 10px!important;
+  border-radius: 20px !important;
+  padding: 10px !important;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) !important;
+  margin: 10px !important;
 }
 
 .DateInput_input {
-    border: 1px solid!important;
-    border-radius: 20px!important;
+  border: 1px solid !important;
+  border-radius: 20px !important;
 }
 
 .DateInput_input:hover {
-    background: #8884d8!important;
-    color: white!important;
-    font-weight: 300!important;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) !important;
+  background: #8884d8 !important;
+  color: white !important;
+  font-weight: 300 !important;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) !important;
 }
 
 @media (max-width: 1024px) {
-    /* Disable hover style when using medium or less size */
-    .DateInput_input:hover {
-        background: white!important;
-        color: black!important;
-        font-weight: 200!important;
-    }
+  /* Disable hover style when using medium or less size */
+  .DateInput_input:hover {
+    background: white !important;
+    color: black !important;
+    font-weight: 200 !important;
+  }
 }
 
 .DateInput_input__focused {
-    background: #8884d8!important;
-    color: white!important;
-    font-weight: 300!important;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) !important;
+  background: #8884d8 !important;
+  color: white !important;
+  font-weight: 300 !important;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2) !important;
 }
 
 .CalendarDay__selected_span {
-    background: #6660d4!important;
-    border: 1px double white!important;
+  background: #6660d4 !important;
+  border: 1px double white !important;
 }
 
 .CalendarDay__selected {
-    background: #8884d8!important;
-    border: 1px double white!important;
+  background: #8884d8 !important;
+  border: 1px double white !important;
 }
 
 .DayPickerKeyboardShortcuts_show__topRight::before {
-    border-right: 33px solid #8884d8!important;
+  border-right: 33px solid #8884d8 !important;
 }
 
 .DateInput_input__focused {
-    border-bottom: 2px solid #8884d8!important;
+  border-bottom: 2px solid #8884d8 !important;
 }
 
 .DayPicker_transitionContainer__vertical {
-    border-radius: 20px!important;
-    border: 1px solid!important;
-    border-color: 8884d8!important;
+  border-radius: 20px !important;
+  border: 1px solid !important;
+  border-color: 8884d8 !important;
 }
 
 .DateRangePicker_picker {
-    border-radius: 20px!important;
-    background-color: transparent;
+  border-radius: 20px !important;
+  background-color: transparent;
 }
